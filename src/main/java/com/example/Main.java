@@ -56,8 +56,10 @@ public class Main {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             String timeStamp = String.valueOf(System.currentTimeMillis());
             String nonce = String.valueOf(10000000 + (int)(Math.random() * 90000000));
-            String pk = "your_public_key_content_here";
-            String sm2EncryptData = Sm2UtilsV2.encryptBase64(MOCK_DATA, pk);//Sm2Utils.encryptSM2(PUBLIC_KEY_PATH, MOCK_DATA);
+            String publicKey = "your_sm2_public_key";
+//            String sm2EncryptData = Sm2Utils.encryptSM2(PUBLIC_KEY_PATH, MOCK_DATA);
+//            String sm2EncryptData = Sm2UtilsV2.encryptBase64(MOCK_DATA, publicKey);
+            String sm2EncryptData = Sm2UtilsV3.encrypt(publicKey, MOCK_DATA);
 
             String signStr = sm2EncryptData + CLIENT_ID + BUSINESS_ID + timeStamp + nonce;
             String signature = sha256(signStr);
