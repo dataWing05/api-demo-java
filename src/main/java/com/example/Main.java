@@ -10,35 +10,81 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.bouncycastle.util.encoders.Hex;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 public class Main {
 
-    private static final String URL = "http://127.0.0.1:8081/api/data/load";
+    private static final String URL = "http://127.0.0.1:8081/api/syncData/dataPush?resourceCode=847600820885";
     private static final String CLIENT_ID = "12805626";
     private static final String BUSINESS_ID = "253869086781";
-    private static final String PUBLIC_KEY_PATH = "public_key.pem";
+    private static final String PUBLIC_KEY_PATH = "your_public_key_path.pem";
 
-    private static final String MOCK_DATA = "{\n" +
-            "                \"upsert\": [\n" +
-            "                    {\"id\": 1, \"name\": \"Alice\", \"score\": 30},\n" +
-            "                    {\"id\": 2, \"name\": \"Bob\", \"score\": 25}\n" +
-            "                ],\n" +
-            "                \"delete\": [\n" +
-            "                    {\"id\": 100, \"score\": 30},\n" +
-            "                    {\"id\": 110, \"score\": 30}\n" +
-            "                ]\n" +
-            "            }";
+    private static final String MOCK_DATA = "[\n" +
+            "    {\n" +
+            "        \"operateType\": \"addOrUpdate\",\n" +
+            "        \"operateTime\": \"2024-04-19 09:00:00\",\n" +
+            "        \"value\": {\n" +
+            "            \"RowGuid\": \"665132089930285056\",\n" +
+            "            \"FaBaoGuid\": \"665132089930285056\",\n" +
+            "            \"ProjectNo\": \"20240805JZ12\",\n" +
+            "            \"ProjectName\": \"数字见证0805测试项目12\",\n" +
+            "            \"FaBaoNo\": \"20240805JZ12\",\n" +
+            "            \"FaBaoName\": \"数字见证0805测试项目12\",\n" +
+            "            \"ZhaoBiaoType\": \"1\",\n" +
+            "            \"ProjectType\": \"A\",\n" +
+            "            \"CGUnitGuid\": \"4271c58ae53c481a63070d66e49d\",\n" +
+            "            \"CGUnitName\": \"一航有限公司\",\n" +
+            "            \"CGUnitOrgNum\": \"913301096767577672\",\n" +
+            "            \"CGGroupName\": \"杭州一航交通工程建设有限公司测试\",\n" +
+            "            \"CGGroupOrgNum\": \"采购人所属集团统一社会信用代码95\",\n" +
+            "            \"DLUnitGuid\": \"1234567890123456789012345678\",\n" +
+            "            \"DLUnitName\": \"\",\n" +
+            "            \"DLUnitOrgNum\": \"\",\n" +
+            "            \"ZhaoBiaoFangShi\": \"G\",\n" +
+            "            \"RegionCode\": \"330100\",\n" +
+            "            \"PBMethod\": \"综合评分法\",\n" +
+            "            \"PlatformName\": \"杭州市国资委\",\n" +
+            "            \"PlatformCode\": \"113301007766375272\",\n" +
+            "            \"CreateDate\": \"2024-11-29 17:05:51\"\n" +
+            "        }\n" +
+            "    }, {\n" +
+            "        \"operateType\": \"addOrUpdate\",\n" +
+            "        \"operateTime\": \"2024-04-19 09:00:00\",\n" +
+            "        \"value\": {\n" +
+            "            \"RowGuid\": \"665132089930285056\",\n" +
+            "            \"FaBaoGuid\": \"665132089930285056\",\n" +
+            "            \"ProjectNo\": \"20240805JZ12\",\n" +
+            "            \"ProjectName\": \"数字见证0805测试项目12\",\n" +
+            "            \"FaBaoNo\": \"20240805JZ12\",\n" +
+            "            \"FaBaoName\": \"数字见证0805测试项目12\",\n" +
+            "            \"ZhaoBiaoType\": \"1\",\n" +
+            "            \"ProjectType\": \"A\",\n" +
+            "            \"CGUnitGuid\": \"4271c58ae53c481a63070d66e49d\",\n" +
+            "            \"CGUnitName\": \"一航有限公司\",\n" +
+            "            \"CGUnitOrgNum\": \"913301096767577672\",\n" +
+            "            \"CGGroupName\": \"杭州一航交通工程建设有限公司测试\",\n" +
+            "            \"CGGroupOrgNum\": \"采购人所属集团统一社会信用代码95\",\n" +
+            "            \"DLUnitGuid\": \"1234567890123456789012345678\",\n" +
+            "            \"DLUnitName\": \"\",\n" +
+            "            \"DLUnitOrgNum\": \"\",\n" +
+            "            \"ZhaoBiaoFangShi\": \"G\",\n" +
+            "            \"RegionCode\": \"330100\",\n" +
+            "            \"PBMethod\": \"综合评分法\",\n" +
+            "            \"PlatformName\": \"杭州市国资委\",\n" +
+            "            \"PlatformCode\": \"113301007766375272\",\n" +
+            "            \"CreateDate\": \"2024-11-29 17:05:51\"\n" +
+            "        }\n" +
+            "    }\n" +
+            "]";
 
     public static void main(String[] args) {
-
+        String pk = "MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEwngc+n4MBr0S1tTCLDu5hur/L3Ak6BXEFnS7RQKGKljcFdWpEIX7Md4yVna/aK2n72ltCTmglU2GcdPgY98C2A==";
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             String timeStamp = String.valueOf(System.currentTimeMillis());
             String nonce = String.valueOf(10000000 + (int)(Math.random() * 90000000));
-            String sm2EncryptData = Sm2Utils.encryptSM2(PUBLIC_KEY_PATH, MOCK_DATA);
+            String sm2EncryptData = Sm2UtilsV2.encryptBase64(MOCK_DATA, pk);//Sm2Utils.encryptSM2(PUBLIC_KEY_PATH, MOCK_DATA);
 
             String signStr = sm2EncryptData + CLIENT_ID + BUSINESS_ID + timeStamp + nonce;
             String signature = sha256(signStr);

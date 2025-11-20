@@ -30,6 +30,11 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.14</version>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-crypto</artifactId>
+            <version>5.8.0.M2</version>
+        </dependency>
     </dependencies>
 
 </project>
