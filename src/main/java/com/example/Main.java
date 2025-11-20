@@ -79,11 +79,11 @@ public class Main {
             "]";
 
     public static void main(String[] args) {
-        String pk = "MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEwngc+n4MBr0S1tTCLDu5hur/L3Ak6BXEFnS7RQKGKljcFdWpEIX7Md4yVna/aK2n72ltCTmglU2GcdPgY98C2A==";
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             String timeStamp = String.valueOf(System.currentTimeMillis());
             String nonce = String.valueOf(10000000 + (int)(Math.random() * 90000000));
+            String pk = "your_public_key_content_here";
             String sm2EncryptData = Sm2UtilsV2.encryptBase64(MOCK_DATA, pk);//Sm2Utils.encryptSM2(PUBLIC_KEY_PATH, MOCK_DATA);
 
             String signStr = sm2EncryptData + CLIENT_ID + BUSINESS_ID + timeStamp + nonce;
