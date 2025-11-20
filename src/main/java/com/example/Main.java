@@ -28,50 +28,23 @@ public class Main {
             "            \"RowGuid\": \"665132089930285056\",\n" +
             "            \"FaBaoGuid\": \"665132089930285056\",\n" +
             "            \"ProjectNo\": \"20240805JZ12\",\n" +
-            "            \"ProjectName\": \"数字见证0805测试项目12\",\n" +
+            "            \"ProjectName\": \"xxx\",\n" +
             "            \"FaBaoNo\": \"20240805JZ12\",\n" +
-            "            \"FaBaoName\": \"数字见证0805测试项目12\",\n" +
+            "            \"FaBaoName\": \"xxx\",\n" +
             "            \"ZhaoBiaoType\": \"1\",\n" +
             "            \"ProjectType\": \"A\",\n" +
             "            \"CGUnitGuid\": \"4271c58ae53c481a63070d66e49d\",\n" +
-            "            \"CGUnitName\": \"一航有限公司\",\n" +
+            "            \"CGUnitName\": \"xx\",\n" +
             "            \"CGUnitOrgNum\": \"913301096767577672\",\n" +
-            "            \"CGGroupName\": \"杭州一航交通工程建设有限公司测试\",\n" +
-            "            \"CGGroupOrgNum\": \"采购人所属集团统一社会信用代码95\",\n" +
+            "            \"CGGroupName\": \"xx\",\n" +
+            "            \"CGGroupOrgNum\": \"xx\",\n" +
             "            \"DLUnitGuid\": \"1234567890123456789012345678\",\n" +
             "            \"DLUnitName\": \"\",\n" +
             "            \"DLUnitOrgNum\": \"\",\n" +
             "            \"ZhaoBiaoFangShi\": \"G\",\n" +
             "            \"RegionCode\": \"330100\",\n" +
-            "            \"PBMethod\": \"综合评分法\",\n" +
-            "            \"PlatformName\": \"杭州市国资委\",\n" +
-            "            \"PlatformCode\": \"113301007766375272\",\n" +
-            "            \"CreateDate\": \"2024-11-29 17:05:51\"\n" +
-            "        }\n" +
-            "    }, {\n" +
-            "        \"operateType\": \"addOrUpdate\",\n" +
-            "        \"operateTime\": \"2024-04-19 09:00:00\",\n" +
-            "        \"value\": {\n" +
-            "            \"RowGuid\": \"665132089930285056\",\n" +
-            "            \"FaBaoGuid\": \"665132089930285056\",\n" +
-            "            \"ProjectNo\": \"20240805JZ12\",\n" +
-            "            \"ProjectName\": \"数字见证0805测试项目12\",\n" +
-            "            \"FaBaoNo\": \"20240805JZ12\",\n" +
-            "            \"FaBaoName\": \"数字见证0805测试项目12\",\n" +
-            "            \"ZhaoBiaoType\": \"1\",\n" +
-            "            \"ProjectType\": \"A\",\n" +
-            "            \"CGUnitGuid\": \"4271c58ae53c481a63070d66e49d\",\n" +
-            "            \"CGUnitName\": \"一航有限公司\",\n" +
-            "            \"CGUnitOrgNum\": \"913301096767577672\",\n" +
-            "            \"CGGroupName\": \"杭州一航交通工程建设有限公司测试\",\n" +
-            "            \"CGGroupOrgNum\": \"采购人所属集团统一社会信用代码95\",\n" +
-            "            \"DLUnitGuid\": \"1234567890123456789012345678\",\n" +
-            "            \"DLUnitName\": \"\",\n" +
-            "            \"DLUnitOrgNum\": \"\",\n" +
-            "            \"ZhaoBiaoFangShi\": \"G\",\n" +
-            "            \"RegionCode\": \"330100\",\n" +
-            "            \"PBMethod\": \"综合评分法\",\n" +
-            "            \"PlatformName\": \"杭州市国资委\",\n" +
+            "            \"PBMethod\": \"xx\",\n" +
+            "            \"PlatformName\": \"xx\",\n" +
             "            \"PlatformCode\": \"113301007766375272\",\n" +
             "            \"CreateDate\": \"2024-11-29 17:05:51\"\n" +
             "        }\n" +
